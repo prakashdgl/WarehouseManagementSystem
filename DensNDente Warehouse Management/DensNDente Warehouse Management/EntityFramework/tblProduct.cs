@@ -17,7 +17,7 @@ namespace DensNDente_Warehouse_Management.EntityFramework
         public tblProduct()
         {
             this.tblPurchaseOrderDetails = new HashSet<tblPurchaseOrderDetail>();
-            this.tblSaleInvoiceDetails = new HashSet<tblSaleInvoiceDetail>();
+           // this.tblSaleInvoiceDetails = new HashSet<tblSaleInvoiceDetail>();
         }
     
         public int ProductId { get; set; }

@@ -104,29 +104,5 @@ namespace DensNDente_Warehouse_Management.Models
                 return false;
             }
         }
-
-        public bool Bulk_Insert(tblSaleInvoice order, List<tblSaleInvoiceDetail> orderDetails)
-        {
-
-            try
-            {
-                foreach (var item in orderDetails)
-                {
-                    order.tblSaleInvoiceDetails.Add(item);
-                }
-
-                repository.tblSaleInvoices.Add(order);
-                repository.SaveChanges();
-
-                return true;
-            }
-            catch (Exception)
-            {
-
-                return false;
-            }
-
-        }
-
     }
 }

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DensDBModel_Namespace.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="DensDBModel_NamespaceStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="DensDBModel_Namespace.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblBin" EntityType="DensDBModel_Namespace.Store.tblBin" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblCustomer" EntityType="DensDBModel_Namespace.Store.tblCustomer" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblEmployee" EntityType="DensDBModel_Namespace.Store.tblEmployee" store:Type="Tables" Schema="dbo" />
@@ -12,7 +13,6 @@
     <EntitySet Name="tblRole" EntityType="DensDBModel_Namespace.Store.tblRole" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblSalary" EntityType="DensDBModel_Namespace.Store.tblSalary" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblSaleInvoice" EntityType="DensDBModel_Namespace.Store.tblSaleInvoice" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="tblSaleInvoiceDetail" EntityType="DensDBModel_Namespace.Store.tblSaleInvoiceDetail" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblSalesTarget" EntityType="DensDBModel_Namespace.Store.tblSalesTarget" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="tblVendor" EntityType="DensDBModel_Namespace.Store.tblVendor" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_tblEmployee_tblRole" Association="DensDBModel_Namespace.Store.FK_tblEmployee_tblRole">
@@ -47,15 +47,17 @@
       <End Role="tblCustomer" EntitySet="tblCustomer" />
       <End Role="tblSaleInvoice" EntitySet="tblSaleInvoice" />
     </AssociationSet>
-    <AssociationSet Name="FK_tblSaleInvoiceDetail_tblProduct" Association="DensDBModel_Namespace.Store.FK_tblSaleInvoiceDetail_tblProduct">
-      <End Role="tblProduct" EntitySet="tblProduct" />
-      <End Role="tblSaleInvoiceDetail" EntitySet="tblSaleInvoiceDetail" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tblSaleInvoiceDetail_tblSaleInvoice" Association="DensDBModel_Namespace.Store.FK_tblSaleInvoiceDetail_tblSaleInvoice">
-      <End Role="tblSaleInvoice" EntitySet="tblSaleInvoice" />
-      <End Role="tblSaleInvoiceDetail" EntitySet="tblSaleInvoiceDetail" />
-    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
   <EntityType Name="tblBin">
     <Key>
       <PropertyRef Name="BinId" />
@@ -124,7 +126,7 @@
     <Key>
       <PropertyRef Name="ProductId" />
     </Key>
-    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="ProductName" Type="varchar" Nullable="false" MaxLength="100" />
     <Property Name="ProductDescription" Type="text" />
     <Property Name="Deleted" Type="bit" Nullable="false" />
@@ -142,7 +144,7 @@
     </Key>
     <Property Name="POId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="VendorId" Type="int" Nullable="false" />
-    <Property Name="OrderDate" Type="date" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
     <Property Name="TotalValue" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="ExpectedDeliveryDate" Type="date" Nullable="false" />
     <Property Name="Deleted" Type="bit" Nullable="false" />
@@ -154,10 +156,8 @@
     <Property Name="PODetailId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="POId" Type="int" Nullable="false" />
     <Property Name="ProductId" Type="int" Nullable="false" />
-    <Property Name="Price" Type="decimal" Scale="2" />
+    <Property Name="Quantity" Type="int" />
     <Property Name="Deleted" Type="bit" Nullable="false" />
-    <Property Name="ReceivedQuantity" Type="int" Nullable="false" />
-    <Property Name="Recieved" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="tblRole">
     <Key>
@@ -198,16 +198,6 @@
     <Property Name="Tax" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="Discount" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="NetSale" Type="decimal" Nullable="false" Scale="2" />
-    <Property Name="Deleted" Type="bit" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tblSaleInvoiceDetail">
-    <Key>
-      <PropertyRef Name="InvoiceDetailId" />
-    </Key>
-    <Property Name="InvoiceDetailId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="InvoiceId" Type="int" Nullable="false" />
-    <Property Name="ProductId" Type="int" Nullable="false" />
-    <Property Name="Price" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="Deleted" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="tblSalesTarget">
@@ -326,30 +316,6 @@
       </Principal>
       <Dependent Role="tblSaleInvoice">
         <PropertyRef Name="CustomerId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tblSaleInvoiceDetail_tblProduct">
-    <End Role="tblProduct" Type="DensDBModel_Namespace.Store.tblProduct" Multiplicity="1" />
-    <End Role="tblSaleInvoiceDetail" Type="DensDBModel_Namespace.Store.tblSaleInvoiceDetail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblProduct">
-        <PropertyRef Name="ProductId" />
-      </Principal>
-      <Dependent Role="tblSaleInvoiceDetail">
-        <PropertyRef Name="ProductId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tblSaleInvoiceDetail_tblSaleInvoice">
-    <End Role="tblSaleInvoice" Type="DensDBModel_Namespace.Store.tblSaleInvoice" Multiplicity="1" />
-    <End Role="tblSaleInvoiceDetail" Type="DensDBModel_Namespace.Store.tblSaleInvoiceDetail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblSaleInvoice">
-        <PropertyRef Name="InvoiceId" />
-      </Principal>
-      <Dependent Role="tblSaleInvoiceDetail">
-        <PropertyRef Name="InvoiceId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
