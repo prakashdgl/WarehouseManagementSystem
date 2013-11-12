@@ -124,7 +124,7 @@
     <Key>
       <PropertyRef Name="ProductId" />
     </Key>
-    <Property Name="ProductId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
     <Property Name="ProductName" Type="varchar" Nullable="false" MaxLength="100" />
     <Property Name="ProductDescription" Type="text" />
     <Property Name="Deleted" Type="bit" Nullable="false" />

@@ -8,9 +8,9 @@ namespace DensNDente_Warehouse_Management.Models
 {
     public class PurchaseOrder : IPurchaseOrder
     {
-         DensDBEntities repository;
+        DensDBEntities repository;
 
-         public PurchaseOrder()
+        public PurchaseOrder()
         {
             if (repository == null)
             {
@@ -29,7 +29,7 @@ namespace DensNDente_Warehouse_Management.Models
 
                 return null;
             }
-            
+
         }
 
         public tblPurchaseOrder Get(int id)
@@ -104,5 +104,29 @@ namespace DensNDente_Warehouse_Management.Models
                 return false;
             }
         }
+
+        public bool Bulk_Insert(tblPurchaseOrder order, List<tblPurchaseOrderDetail> orderDetails)
+        {
+
+            try
+            {
+                foreach (var item in orderDetails)
+                {
+                    order.tblPurchaseOrderDetails.Add(item);
+                }
+
+                repository.tblPurchaseOrders.Add(order);
+                repository.SaveChanges();
+
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+
+        }
+
     }
 }

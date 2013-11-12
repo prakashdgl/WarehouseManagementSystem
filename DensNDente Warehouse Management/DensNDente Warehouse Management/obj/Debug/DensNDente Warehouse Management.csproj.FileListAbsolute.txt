@@ -13,10 +13,3 @@ C:\Users\Maya\Documents\Visual Studio 2012\Projects\DensNDente Warehouse Managem
 C:\Users\Maya\Documents\Visual Studio 2012\Projects\DensNDente Warehouse Management\DensNDente Warehouse Management\obj\Debug\DensNDente Warehouse Management.csprojResolveAssemblyReference.cache
 C:\Users\Maya\Documents\Visual Studio 2012\Projects\DensNDente Warehouse Management\DensNDente Warehouse Management\obj\Debug\DensNDente Warehouse Management.dll
 C:\Users\Maya\Documents\Visual Studio 2012\Projects\DensNDente Warehouse Management\DensNDente Warehouse Management\obj\Debug\DensNDente Warehouse Management.pdb
-C:\Users\Shivam\Downloads\DensNDente Warehouse Management\DensNDente Warehouse Management\DensNDente Warehouse Management\bin\DensNDente Warehouse Management.dll
-C:\Users\Shivam\Downloads\DensNDente Warehouse Management\DensNDente Warehouse Management\DensNDente Warehouse Management\bin\DensNDente Warehouse Management.pdb
-C:\Users\Shivam\Downloads\DensNDente Warehouse Management\DensNDente Warehouse Management\DensNDente Warehouse Management\bin\EntityFramework.dll
-C:\Users\Shivam\Downloads\DensNDente Warehouse Management\DensNDente Warehouse Management\DensNDente Warehouse Management\bin\EntityFramework.xml
-C:\Users\Shivam\Downloads\DensNDente Warehouse Management\DensNDente Warehouse Management\DensNDente Warehouse Management\obj\Debug\DensNDente Warehouse Management.csprojResolveAssemblyReference.cache
-C:\Users\Shivam\Downloads\DensNDente Warehouse Management\DensNDente Warehouse Management\DensNDente Warehouse Management\obj\Debug\DensNDente Warehouse Management.dll
-C:\Users\Shivam\Downloads\DensNDente Warehouse Management\DensNDente Warehouse Management\DensNDente Warehouse Management\obj\Debug\DensNDente Warehouse Management.pdb

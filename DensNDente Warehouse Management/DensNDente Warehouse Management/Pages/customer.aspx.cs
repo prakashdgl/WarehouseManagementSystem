@@ -57,6 +57,8 @@ namespace DensNDente_Warehouse_Management
             txtEmail.Text = result.Email;
             txtPhoneNumber.Text = result.Phone;
             txtFaxNumber.Text = result.Fax;
+
+
         }
 
         private tblCustomer get_Data_From_Form()
@@ -136,7 +138,7 @@ namespace DensNDente_Warehouse_Management
             Customer repository = new Customer();
             if (repository.Delete(id))
             {
-                this.ShowSuccessfulNotification("Product deleted.");
+                this.ShowSuccessfulNotification("Customer deleted.");
                 Load_Data_Grid();
             }
             else
