@@ -79,8 +79,7 @@ namespace DensNDente_Warehouse_Management
         }
         private void load_grid() {
             Product repository = new Product();
-          //  var result = repository.GetAll().Select(r => new { r.ProductName, BinId = r.BinId, r.StandardCost, r.SellingCost, r.Quantity, r.SafetyStockLevel, r.ReorderPoint }).ToArray();
-            var result = repository.GetAll().ToArray();
+            var result = repository.GetAll().Select(r => new { r.ProductName, BinName = r.tblBin.Name, r.StandardCost, r.SellingCost, r.Quantity, r.SafetyStockLevel, r.ReorderPoint }).ToArray();
             gridProduct.DataSource = result;
             gridProduct.DataBind();
         }

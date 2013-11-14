@@ -17,7 +17,7 @@ namespace DensNDente_Warehouse_Management.EntityFramework
         public int InvoiceDetailId { get; set; }
         public int InvoiceId { get; set; }
         public int ProductId { get; set; }
-        public decimal Price { get; set; }
+        public int Quantity { get; set; }
         public bool Deleted { get; set; }
     
         public virtual tblProduct tblProduct { get; set; }

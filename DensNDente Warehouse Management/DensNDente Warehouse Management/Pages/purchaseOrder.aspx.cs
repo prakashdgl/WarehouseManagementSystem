@@ -61,10 +61,9 @@ namespace DensNDente_Warehouse_Management
                         repository_detail.Add(tbl_detail);                        
                     }
                 }               
-            }           
+            }
+           
         }
-
-        
 
         //Check whether any of the checkbox is checked or not and texbox
         public int checkForCbTb()
@@ -88,6 +87,7 @@ namespace DensNDente_Warehouse_Management
                 }                
             }
              return q;
-        }      
+        }
+       
     }
 }

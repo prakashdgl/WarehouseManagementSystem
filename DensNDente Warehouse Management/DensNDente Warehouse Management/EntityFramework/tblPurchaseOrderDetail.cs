@@ -16,10 +16,9 @@ namespace DensNDente_Warehouse_Management.EntityFramework
     {
         public int PODetailId { get; set; }
         public int POId { get; set; }
-        public int ProductId { get; set; }       
+        public int ProductId { get; set; }
         public bool Deleted { get; set; }
         public int Quantity { get; set; }
-       
     
         public virtual tblProduct tblProduct { get; set; }
         public virtual tblPurchaseOrder tblPurchaseOrder { get; set; }

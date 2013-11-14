@@ -4,30 +4,32 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b88217fb27484cdbbc7eacf80d67e357" Name="Diagram1" ZoomLevel="95">
-        <EntityTypeShape EntityType="DensDBModel_Namespace.tblBin" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DensDBModel_Namespace.tblCustomer" Width="1.5" PointX="4.625" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DensDBModel_Namespace.tblPermission" Width="1.5" PointX="10.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DensDBModel_Namespace.tblRole" Width="1.5" PointX="8.75" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DensDBModel_Namespace.tblSalesTarget" Width="1.5" PointX="12.75" PointY="0.625" IsExpanded="true" />
-        <AssociationConnector Association="DensDBModel_Namespace.FK_tblPermission_tblRole" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DensDBModel_Namespace.tblEmployee" Width="1.5" PointX="10.75" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DensDBModel_Namespace.tblNewsLetter" Width="1.5" PointX="6.875" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DensDBModel_Namespace.tblProduct" Width="1.5" PointX="2.5" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DensDBModel_Namespace.tblPurchaseOrder" Width="1.5" PointX="2.5" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DensDBModel_Namespace.tblSalary" Width="1.5" PointX="13.875" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DensDBModel_Namespace.tblSaleInvoice" Width="1.5" PointX="6.875" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DensDBModel_Namespace.tblVendor" Width="1.5" PointX="0.5" PointY="3.75" IsExpanded="true" />
-        <AssociationConnector Association="DensDBModel_Namespace.FK_tblSaleInvoice_tblCustomer" />
-        <AssociationConnector Association="DensDBModel_Namespace.FK_tblEmployee_tblRole" />
-        <AssociationConnector Association="DensDBModel_Namespace.FK_tblPurchaseOrder_tblVendor" />
-        <AssociationConnector Association="DensDBModel_Namespace.FK_tblProduct_tblBin" />
-        <AssociationConnector Association="DensDBModel_Namespace.FK_tblSalary_tblEmployee" />
-        <EntityTypeShape EntityType="DensDBModel_Namespace.sysdiagram" Width="1.5" PointX="0.26974971046193952" PointY="8.6873780082386816" />
-        <EntityTypeShape EntityType="DensDBModel_Namespace.tblPurchaseOrderDetail" Width="1.5" PointX="4.5" PointY="0.5" />
-        <AssociationConnector Association="DensDBModel_Namespace.FK_tblPurchaseOrderDetails_tblProduct" />
-        <AssociationConnector Association="DensDBModel_Namespace.FK_tblPurchaseOrderDetails_tblPurchaseOrder" />
-        </Diagram>
+      <Diagram DiagramId="d96e47ab94d3462a8d73aee1386318a4" Name="Diagram1">
+        <EntityTypeShape EntityType="DensDBModel.tblBin" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="DensDBModel.tblCustomer" Width="1.5" PointX="3.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DensDBModel.tblEmployee" Width="1.5" PointX="11" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DensDBModel.tblNewsLetter" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DensDBModel.tblPermission" Width="1.5" PointX="11" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DensDBModel.tblProduct" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="DensDBModel.tblPurchaseOrder" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DensDBModel.tblPurchaseOrderDetail" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DensDBModel.tblRole" Width="1.5" PointX="8.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DensDBModel.tblSalary" Width="1.5" PointX="13.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DensDBModel.tblSaleInvoice" Width="1.5" PointX="6" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DensDBModel.tblSaleInvoiceDetail" Width="1.5" PointX="8.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DensDBModel.tblSalesTarget" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DensDBModel.tblVendor" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="DensDBModel.FK_tblProduct_tblBin" ManuallyRouted="false" />
+        <AssociationConnector Association="DensDBModel.FK_tblSaleInvoice_tblCustomer" ManuallyRouted="false" />
+        <AssociationConnector Association="DensDBModel.FK_tblEmployee_tblRole" ManuallyRouted="false" />
+        <AssociationConnector Association="DensDBModel.FK_tblSalary_tblEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="DensDBModel.FK_tblPermission_tblRole" ManuallyRouted="false" />
+        <AssociationConnector Association="DensDBModel.FK_tblPurchaseOrderDetails_tblProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="DensDBModel.FK_tblSaleInvoiceDetail_tblProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="DensDBModel.FK_tblPurchaseOrder_tblVendor" ManuallyRouted="false" />
+        <AssociationConnector Association="DensDBModel.FK_tblPurchaseOrderDetails_tblPurchaseOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="DensDBModel.FK_tblSaleInvoiceDetail_tblSaleInvoice" ManuallyRouted="false" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

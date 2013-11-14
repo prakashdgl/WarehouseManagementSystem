@@ -16,8 +16,8 @@ namespace DensNDente_Warehouse_Management.EntityFramework
     {
         public tblRole()
         {
-            this.tblPermissions = new HashSet<tblPermission>();
             this.tblEmployees = new HashSet<tblEmployee>();
+            this.tblPermissions = new HashSet<tblPermission>();
         }
     
         public int RoleId { get; set; }
@@ -31,7 +31,7 @@ namespace DensNDente_Warehouse_Management.EntityFramework
         public bool Reports { get; set; }
         public bool Deleted { get; set; }
     
-        public virtual ICollection<tblPermission> tblPermissions { get; set; }
         public virtual ICollection<tblEmployee> tblEmployees { get; set; }
+        public virtual ICollection<tblPermission> tblPermissions { get; set; }
     }
 }

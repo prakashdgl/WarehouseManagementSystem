@@ -20,6 +20,7 @@ namespace DensNDente_Warehouse_Management.Models
 
         public IEnumerable<tblSaleInvoice> GetAll()
         {
+            
             try
             {
                 return repository.tblSaleInvoices.Where(r => r.Deleted == false).Select(r => r);
@@ -104,5 +105,39 @@ namespace DensNDente_Warehouse_Management.Models
                 return false;
             }
         }
+        public int GetId()
+        {
+            try
+            {
+                int[] invoiceID = repository.tblSaleInvoices.Where(r => r.Deleted == false).Select(r => r.InvoiceId).ToArray(); 
+                int max = invoiceID.Max(); 
+                return max;
+            }
+            catch (Exception)
+            { return 0; }
+        }
+        public bool Bulk_Insert(tblSaleInvoice order, List<tblSaleInvoiceDetail> orderDetails)
+        {
+
+            try
+            {
+                foreach (var item in orderDetails)
+                {
+                    order.tblSaleInvoiceDetails.Add(item);
+                }
+               
+                repository.tblSaleInvoices.Add(order);
+                repository.SaveChanges();
+
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+
+        }
+
     }
 }

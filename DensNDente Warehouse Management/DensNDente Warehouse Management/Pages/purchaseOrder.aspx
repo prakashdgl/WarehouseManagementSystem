@@ -19,7 +19,7 @@
                  }
              }
          }
-
+        
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -55,10 +55,10 @@
                                     <input id="chkbox" type="checkbox" onclick=" SelectAll(this)" />
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:CheckBox ID="CheckBox1" runat="server"  />
+                                    <asp:CheckBox ID="CheckBox1" runat="server" />
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:CheckBox ID="CheckBox1" runat="server"  />
+                                    <asp:CheckBox ID="CheckBox1" runat="server" />
                                 </EditItemTemplate>
                             </asp:TemplateField>
                     <asp:BoundField DataField="ProductId" HeaderText="ProductId" InsertVisible="False" ReadOnly="True" SortExpression="ProductId" />

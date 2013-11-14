@@ -42,11 +42,7 @@
                     </td>
                     <td>
                         <asp:DropDownList ID="ddlBinId" runat="server" DataSourceID="binName" DataTextField="Name" DataValueField="BinId"></asp:DropDownList>
-                        <asp:SqlDataSource ID="binName" runat="server" ConnectionString="<%$ ConnectionStrings:DensDBConnectionString %>" SelectCommand="SELECT [Name], [BinId] FROM [tblBin] WHERE ([Deleted] = @Deleted)">
-                            <SelectParameters>
-                                <asp:Parameter DefaultValue="false" Name="Deleted" Type="Boolean" />
-                            </SelectParameters>
-                        </asp:SqlDataSource>
+                        <asp:SqlDataSource ID="binName" runat="server" ConnectionString="<%$ ConnectionStrings:DensDBConnectionString %>" SelectCommand="SELECT [Name], [BinId] FROM [tblBin]"></asp:SqlDataSource>
                     </td>
                 </tr>
                  <tr>
@@ -108,7 +104,7 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="ProductName" HeaderText="ProductName" SortExpression="ProductName" />
-                    <asp:BoundField DataField="BinId" HeaderText="BinName" SortExpression="BinId" />
+                    <asp:BoundField DataField="BinName" HeaderText="BinName" SortExpression="BinName" />
                     <asp:BoundField DataField="StandardCost" HeaderText="StandardCost" SortExpression="StandardCost" />
                     <asp:BoundField DataField="SellingCost" HeaderText="SellingCost" SortExpression="SellingCost" />
                     <asp:BoundField DataField="Quantity" HeaderText="Quantity" SortExpression="Quantity" />
@@ -116,6 +112,15 @@
                     <asp:BoundField DataField="ReorderPoint" HeaderText="ReorderPoint" SortExpression="ReorderPoint" />
                 </Columns>
             </asp:GridView>
+
+            
+
+            
+
+            
+
+            
+
         </div>
 
     </div>

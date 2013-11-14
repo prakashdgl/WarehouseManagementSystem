@@ -17,7 +17,7 @@ namespace DensNDente_Warehouse_Management.EntityFramework
         public tblProduct()
         {
             this.tblPurchaseOrderDetails = new HashSet<tblPurchaseOrderDetail>();
-           // this.tblSaleInvoiceDetails = new HashSet<tblSaleInvoiceDetail>();
+            this.tblSaleInvoiceDetails = new HashSet<tblSaleInvoiceDetail>();
         }
     
         public int ProductId { get; set; }
@@ -32,8 +32,8 @@ namespace DensNDente_Warehouse_Management.EntityFramework
         public int Quantity { get; set; }
         public decimal SellingCost { get; set; }
     
+        public virtual tblBin tblBin { get; set; }
         public virtual ICollection<tblPurchaseOrderDetail> tblPurchaseOrderDetails { get; set; }
         public virtual ICollection<tblSaleInvoiceDetail> tblSaleInvoiceDetails { get; set; }
-        public virtual tblBin tblBin { get; set; }
     }
 }

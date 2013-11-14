@@ -28,10 +28,10 @@ namespace DensNDente_Warehouse_Management.EntityFramework
         public string MobileNo { get; set; }
         public string Address { get; set; }
         public string SINNo { get; set; }
+        public double PayPerHour { get; set; }
         public int RollId { get; set; }
         public bool Deleted { get; set; }
         public string Password { get; set; }
-        public double PayPerHour { get; set; }
     
         public virtual tblRole tblRole { get; set; }
         public virtual ICollection<tblSalary> tblSalaries { get; set; }

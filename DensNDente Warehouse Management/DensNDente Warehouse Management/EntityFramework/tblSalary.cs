@@ -15,12 +15,12 @@ namespace DensNDente_Warehouse_Management.EntityFramework
     public partial class tblSalary
     {
         public int SalaryId { get; set; }
-        public decimal TotalSalary { get; set; }
-        public bool Deleted { get; set; }
         public int EmployeeId { get; set; }
         public System.DateTime StartDate { get; set; }
         public System.DateTime EndDate { get; set; }
         public double TotalHours { get; set; }
+        public decimal TotalSalary { get; set; }
+        public bool Deleted { get; set; }
     
         public virtual tblEmployee tblEmployee { get; set; }
     }
