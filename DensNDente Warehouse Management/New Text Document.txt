@@ -1,0 +1,41 @@
+ protected void deleteSaleInvoice_Click(object sender, EventArgs e)
+        {
+            SaleInvoice repoSale = new SaleInvoice();
+            tblSaleInvoice tblSale =  repoSale.Get(Convert.ToInt32(DropDownList1.SelectedValue));
+            bool a=repoSale.Delete(tblSale.InvoiceId);
+
+            SaleInvoiceDetail repo = new SaleInvoiceDetail();
+            tblSaleInvoiceDetail sid = new tblSaleInvoiceDetail();
+            bool b = repo.DeleteByInvoiceDetailId(tblSale.InvoiceId);
+            if(a==true && b==true)
+            {
+                this.ShowSuccessfulNotification("Sale Inovice Deleted");
+            }
+
+        }
+
+
+
+public bool DeleteByInvoiceDetailId(int id)
+        {
+
+            try
+            {
+                var result = (from r in repository.tblSaleInvoiceDetails
+                              where r.InvoiceId == id
+                              select r);
+                
+
+                 foreach (var detail in result)
+                {
+                    detail.Deleted = true;
+                   
+                }
+                repository.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }

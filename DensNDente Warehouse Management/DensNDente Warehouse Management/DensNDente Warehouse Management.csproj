@@ -66,6 +66,7 @@
     <Content Include="default.aspx" />
     <Content Include="Images\logo.png" />
     <Content Include="lostpassword.aspx" />
+    <Content Include="Pages\SalesInvoiceUnD.aspx" />
     <Content Include="Scripts\jquery-1.4.2.min.js" />
     <Content Include="Scripts\jquery.jnotify.js" />
     <Content Include="Style\jquery.jnotify.css" />
@@ -197,6 +198,13 @@
     <Compile Include="Models\SaleInvoiceDetail.cs" />
     <Compile Include="Models\SalesTarget.cs" />
     <Compile Include="Models\Vendor.cs" />
+    <Compile Include="Pages\SalesInvoiceUnD.aspx.cs">
+      <DependentUpon>SalesInvoiceUnD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\SalesInvoiceUnD.aspx.designer.cs">
+      <DependentUpon>SalesInvoiceUnD.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="main.aspx.cs">
       <DependentUpon>main.aspx</DependentUpon>
