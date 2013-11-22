@@ -8,30 +8,33 @@
     <link href="Style/Login.css" rel="stylesheet" />
 </head>
 <body>
-    <form id="form1" runat="server">      
-            <div class="login">
-                <div class="login-screen">
-                    <div class="app-title">
-                        <h1>Login</h1>
+    <form id="form1" runat="server">
+        <div class="login">
+            <div class="login-screen">
+                <div class="app-title">
+                    <h1>Login</h1>
+                </div>
+
+                <div class="login-form">
+                    <div class="control-group">
+                        <asp:TextBox ID="txtEmail" runat="server" placeholder="email"></asp:TextBox>
+
+
                     </div>
 
-                    <div class="login-form">
-                        <div class="control-group">
-                            <input type="text" value="" placeholder="username" id="login-name">
-                            <label class="login-field-icon fui-user" for="login-name"></label>
-                        </div>
+                    <div class="control-group">
+                        <asp:TextBox ID="txtpassword" class="login-field" value="" placeholder="password" runat="server" TextMode="Password"></asp:TextBox>
 
-                        <div class="control-group">
-                            <input type="password" class="login-field" value="" placeholder="password">
-                            <label class="login-field-icon fui-lock" for="login-pass"></label>
-                        </div>
-
-                        <a class="btn btn-primary btn-large btn-block" href="#">login</a>
-                        <a class="login-link" href="lostpassword.aspx">Lost your password?</a>
                     </div>
+                    <asp:LinkButton ID="btnLogin" class="btn btn-primary btn-large btn-block" runat="server" OnClick="btnLogin_Click">Login</asp:LinkButton>
+
+                    <a class="login-link" href="lostpassword.aspx">Lost your password?</a>
+                    <br />
+                    <asp:Label ID="lblError" runat="server" ForeColor="red"></asp:Label>
                 </div>
             </div>
-      
+        </div>
+
     </form>
 </body>
 </html>
