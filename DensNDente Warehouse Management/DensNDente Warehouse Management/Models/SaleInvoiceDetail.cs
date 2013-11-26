@@ -109,7 +109,29 @@ namespace DensNDente_Warehouse_Management.Models
                 return false;
             }
         }
-       
+        public bool DeleteByInvoiceDetailId(int id)
+        {
+
+            try
+            {
+                var result = (from r in repository.tblSaleInvoiceDetails
+                              where r.InvoiceId == id
+                              select r);
+
+
+                foreach (var detail in result)
+                {
+                    detail.Deleted = true;
+
+                }
+                repository.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
         public bool Add(tblSaleInvoiceDetail obj)
         {
 

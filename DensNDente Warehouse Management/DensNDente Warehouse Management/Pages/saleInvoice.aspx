@@ -48,13 +48,8 @@
                     <td class="auto-style1">
                         Customer Name:</td>
                     <td>
-                        <asp:DropDownList ID="customerDropDown" runat="server" DataSourceID="SqlDataSource1" DataTextField="Firstname" DataValueField="CustomerId">
-                        </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DensDBConnectionString %>" SelectCommand="SELECT [CustomerId], [Firstname] FROM [tblCustomer] WHERE ([Deleted] = @Deleted)">
-                            <SelectParameters>
-                                <asp:Parameter DefaultValue="false" Name="Deleted" Type="Boolean" />
-                            </SelectParameters>
-                        </asp:SqlDataSource>
+                        <asp:DropDownList ID="customerDropDown" runat="server" DataValueField="id" DataTextField="name"> </asp:DropDownList>
+                        
                     </td>
                 </tr>
                        </table>

@@ -21,13 +21,11 @@
                     <td class="auto-style1">Invoice No:
                     </td>
                     <td>
-                        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSourceInvoice" DataTextField="InvoiceId" DataValueField="InvoiceId" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" >
+                        <asp:DropDownList ID="DropDownList1" runat="server"  DataTextField="name" DataValueField="id" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" >
+                        
+                        
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSourceInvoice" runat="server" ConnectionString="<%$ ConnectionStrings:DensDBConnectionString %>" SelectCommand="SELECT [InvoiceId] FROM [tblSaleInvoice] WHERE ([Deleted] = @Deleted)">
-                            <SelectParameters>
-                                <asp:Parameter DefaultValue="false" Name="Deleted" Type="Boolean" />
-                            </SelectParameters>
-                        </asp:SqlDataSource>
+                        
 
                     </td>
                 </tr>
