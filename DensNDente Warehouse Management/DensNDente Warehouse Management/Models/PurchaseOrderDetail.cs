@@ -32,6 +32,20 @@ namespace DensNDente_Warehouse_Management.Models
             
         }
 
+        public IEnumerable<tblPurchaseOrderDetail> GetAll(int id)
+        {
+            try
+            {
+                return repository.tblPurchaseOrderDetails.Where(r => r.Deleted == false && r.POId == id ).Select(r => r);
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+
+        }
+
         public tblPurchaseOrderDetail Get(int id)
         {
 

@@ -8,7 +8,7 @@ namespace DensNDente_Warehouse_Management.Models
 {
     public class PurchaseOrder : IPurchaseOrder
     {
-         DensDBEntities repository;
+        DensDBEntities repository;
 
          public PurchaseOrder()
         {
@@ -42,21 +42,6 @@ namespace DensNDente_Warehouse_Management.Models
             catch (Exception)
             {
                 return null;
-            }
-        }
-
-        public int GetId()
-        {
-
-            try
-            {
-                int[] POID = repository.tblPurchaseOrders.Where(r => r.Deleted == false).Select(r => r.POId).ToArray();
-                int max = POID.Max();
-                return max;
-            }
-            catch (Exception)
-            {
-                return 0;
             }
         }
 
@@ -102,7 +87,12 @@ namespace DensNDente_Warehouse_Management.Models
 
             }
         }
-
+        public int GetId() { 
+            try 
+            { 
+   int[] POID = repository.tblPurchaseOrders.Where(r => r.Deleted == false).Select(r => r.POId).ToArray();
+                int max = POID.Max(); 
+                return max; } catch (Exception) { return 0; } }
 
         public bool Add(tblPurchaseOrder obj)
         {
@@ -120,4 +110,5 @@ namespace DensNDente_Warehouse_Management.Models
             }
         }
     }
+
 }

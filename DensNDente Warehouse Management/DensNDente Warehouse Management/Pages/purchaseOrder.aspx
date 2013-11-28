@@ -19,7 +19,7 @@
                  }
              }
          }
-
+        
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -32,12 +32,8 @@
                     <td class="auto-style1">Select Vendor Name:
                     </td>
                   <td>
-                      <asp:DropDownList Width="100px" ID="vendorName" runat="server" DataSourceID="ddlVendorName" DataTextField="VendorName" DataValueField="VendorId"></asp:DropDownList>
-                      <asp:SqlDataSource ID="ddlVendorName" runat="server" ConnectionString="<%$ ConnectionStrings:DensDBConnectionString %>" SelectCommand="SELECT [VendorId], [VendorName] FROM [tblVendor] WHERE ([Deleted] = @Deleted)">
-                          <SelectParameters>
-                              <asp:Parameter DefaultValue="false" Name="Deleted" Type="Boolean" />
-                          </SelectParameters>
-                      </asp:SqlDataSource>
+                      <asp:DropDownList Width="100px" ID="vendorName" DataValueField="id" DataTextField="name" runat="server" AutoPostBack="true" OnSelectedIndexChanged="vendorName_SelectedIndexChanged"></asp:DropDownList>
+                     
                    </td>
                 </tr>
                 </table>            
@@ -48,17 +44,17 @@
         <div style="width:100%; float:left;">
             <div style="width:20%; float:left;">&nbsp</div>
             <div style="width:34%; float:left;">
-            <asp:GridView CssClass="ctable"  ID="gridProduct" runat="server" AutoGenerateColumns="False" DataKeyNames="ProductId">
+            <asp:GridView CssClass="ctable" Visible="false" ID="gridProduct" runat="server" AutoGenerateColumns="False" DataKeyNames="ProductId">
                 <Columns>
                      <asp:TemplateField>
                                 <HeaderTemplate>
                                     <input id="chkbox" type="checkbox" onclick=" SelectAll(this)" />
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:CheckBox ID="CheckBox1" runat="server"  />
+                                    <asp:CheckBox ID="CheckBox1" runat="server" />
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:CheckBox ID="CheckBox1" runat="server"  />
+                                    <asp:CheckBox ID="CheckBox1" runat="server" />
                                 </EditItemTemplate>
                             </asp:TemplateField>
                     <asp:BoundField DataField="ProductId" HeaderText="ProductId" InsertVisible="False" ReadOnly="True" SortExpression="ProductId" />
