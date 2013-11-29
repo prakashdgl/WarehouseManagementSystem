@@ -22,7 +22,7 @@
             <div style="width: inherit; float: left">
                 <div style="width: 1024px; margin: auto">
                     <div style="float: left; margin-top: 10px;">
-                        <a href="../default.aspx">
+                        <a href="../main.aspx">
                             <img src="../Images/logo.png" /></a>
                     </div>
                     <div style="float: right; margin-top: 15px; text-align: center;">
@@ -36,10 +36,10 @@
             <div style="width: inherit; float: left">
                 <div style="width: 1024px; margin: auto">
 
-                    <div id='cssmenu' style="margin-bottom: 10px">
-                        <ul>
+                    <div id='cssmenu' style="margin-bottom: 10px" runat="server">
+                       <%-- <ul>
                             <li class='active'><a href="../main.aspx">Home</a></li>
-                            <li class='has-sub '><a href='#'>Products</a>
+                            <li class='has-sub'><a href='#'>Products</a>
                                 <ul>
                                     <li class='has-sub '><a href='#'>Product 1</a>
                                         <ul>
@@ -81,7 +81,7 @@
 
                             </li>
                             <li><a href='#'>Contact</a></li>
-                        </ul>
+                        </ul>--%>
                     </div>
 
                 </div>
