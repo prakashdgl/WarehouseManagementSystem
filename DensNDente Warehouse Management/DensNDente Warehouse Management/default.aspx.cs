@@ -13,7 +13,7 @@ namespace DensNDente_Warehouse_Management
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session.RemoveAll();
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -23,7 +23,7 @@ namespace DensNDente_Warehouse_Management
             if (result!=null)
             {
                 Session["User"] = result;
-               
+                Session["UserRole"] = result.tblRole;
                 Response.Redirect("~/main.aspx");
             }
             else
