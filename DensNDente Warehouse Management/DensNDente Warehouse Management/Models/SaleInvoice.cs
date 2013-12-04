@@ -145,6 +145,25 @@ namespace DensNDente_Warehouse_Management.Models
             public int TotalQTY { get; set; }
         }
 
+ public List<ReportProductByTime> getProductByCustomer(int id)
+        {
+            try
+            {
+                var product = (from p in repository.tblSaleInvoiceDetails
+                               where p.tblSaleInvoice.CustomerId == id
+                               group p by p.tblProduct.ProductName into g
+                               let totalQty = g.Select(r => r.Quantity).Sum()
+                               orderby totalQty descending
+                               select new ReportProductByTime { ProductName = g.Key, TotalQTY = totalQty }).ToList();
+                return product;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+        }
+
         public List<ReportProductByTime> getProductByTime(DateTime StartTime, DateTime EndTime)
         {
 
