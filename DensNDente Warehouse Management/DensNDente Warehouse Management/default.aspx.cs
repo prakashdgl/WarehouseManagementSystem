@@ -13,6 +13,7 @@ namespace DensNDente_Warehouse_Management
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             Session.RemoveAll();
         }
 
@@ -20,8 +21,10 @@ namespace DensNDente_Warehouse_Management
         {
             Employee obj = new Employee();
             tblEmployee result = obj.GetAll().Where(r => r.Email == txtEmail.Text.Trim() && r.Password == txtpassword.Text).FirstOrDefault();
-            if (result!=null)
+            if (result != null)
             {
+                Session.Timeout = 30;
+
                 Session["User"] = result;
                 Session["UserRole"] = result.tblRole;
                 Response.Redirect("~/main.aspx");

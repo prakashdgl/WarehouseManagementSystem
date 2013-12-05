@@ -119,5 +119,21 @@ namespace DensNDente_Warehouse_Management.Models
                 return false;
             }
         }
+
+ public int Get_SafteyStockLevel_Count()
+        {
+
+            try
+            {
+                return repository.tblProducts.Where(r => r.Quantity < r.SafetyStockLevel).Count();
+            }
+            catch (Exception)
+            {
+
+                return 0;
+            }
+
+        }
+
     }
 }

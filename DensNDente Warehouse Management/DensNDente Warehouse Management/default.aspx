@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Dens 'n Dente : Login</title>
     <link href="Style/Login.css" rel="stylesheet" />
 </head>
 <body>

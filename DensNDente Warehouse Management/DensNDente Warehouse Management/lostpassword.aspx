@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+   <title>Dens 'n Dente : Lost Password</title>
     <link href="Style/Login.css" rel="stylesheet" />
 </head>
 <body>
@@ -31,7 +31,7 @@
 
                             <a class="login-link" href="default.aspx">back to login</a>
                             <br />
-                            <asp:Label ID="lblError" runat="server" ForeColor="red"></asp:Label>
+                            <asp:Label ID="lblError" runat="server" ForeColor="red" Font-Bold="true"></asp:Label>
                             <asp:UpdateProgress ID="UpdateProgress1" runat="server">
                                 <ProgressTemplate>
                                     <img src="Images/ajax-loader.gif" />

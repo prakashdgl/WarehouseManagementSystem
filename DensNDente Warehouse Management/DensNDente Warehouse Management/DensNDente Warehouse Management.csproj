@@ -64,18 +64,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="default.aspx" />
+    <Content Include="Images\ajax-loader.gif" />
     <Content Include="Images\logo.png" />
     <Content Include="lostpassword.aspx" />
+    <Content Include="Pages\productVendorLink.aspx" />
+    <Content Include="Pages\purchaseOrderEdit.aspx" />
     <Content Include="Pages\SalesInvoiceUnD.aspx" />
+    <Content Include="Scripts\java.js" />
     <Content Include="Scripts\jquery-1.4.2.min.js" />
     <Content Include="Scripts\jquery.jnotify.js" />
     <Content Include="Style\jquery.jnotify.css" />
     <Content Include="Style\Login.css" />
     <Content Include="Style\MainStyle.css" />
     <Content Include="Style\Menu.css" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Web.config" />
     <Content Include="main.aspx" />
     <Content Include="Pages\bin.aspx" />
     <Content Include="Pages\role.aspx" />
@@ -83,12 +85,16 @@
     <Content Include="Pages\customer.aspx" />
     <Content Include="Pages\employee.aspx" />
     <Content Include="Pages\newsletter.aspx" />
-    <Content Include="Pages\permission.aspx" />
     <Content Include="Pages\purchaseOrder.aspx" />
     <Content Include="Pages\salary.aspx" />
-    <Content Include="Pages\salesTarget.aspx" />
     <Content Include="Pages\vendor.aspx" />
     <Content Include="Pages\saleInvoice.aspx" />
+    <Content Include="Pages\safteyStock.aspx" />
+    <Content Include="Reports\reportStock.aspx" />
+    <Content Include="Reports\reportProductSoldByTime.aspx" />
+    <Content Include="Reports\reportProductByCustomer.aspx" />
+    <Content Include="Pages\salesTarget.aspx" />
+    <Content Include="Pages\changePassword.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.Master.cs">
@@ -132,10 +138,10 @@
     <Compile Include="EntityFramework\tblNewsLetter.cs">
       <DependentUpon>DensModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityFramework\tblPermission.cs">
+    <Compile Include="EntityFramework\tblProduct.cs">
       <DependentUpon>DensModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityFramework\tblProduct.cs">
+    <Compile Include="EntityFramework\tblProductVendorLink.cs">
       <DependentUpon>DensModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\tblPurchaseOrder.cs">
@@ -172,13 +178,14 @@
     </Compile>
     <Compile Include="Models\Bin.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Email.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\IBin.cs" />
     <Compile Include="Models\ICustomer.cs" />
     <Compile Include="Models\IEmployee.cs" />
     <Compile Include="Models\INewsLetter.cs" />
-    <Compile Include="Models\IPermission.cs" />
     <Compile Include="Models\IProduct.cs" />
+    <Compile Include="Models\IProductVendorLink.cs" />
     <Compile Include="Models\IPurchaseOrder.cs" />
     <Compile Include="Models\IPurchaseOrderDetail.cs" />
     <Compile Include="Models\IRole.cs" />
@@ -188,8 +195,8 @@
     <Compile Include="Models\ISalesTarget.cs" />
     <Compile Include="Models\IVendor.cs" />
     <Compile Include="Models\NewsLetter.cs" />
-    <Compile Include="Models\Permission.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductVendorLink.cs" />
     <Compile Include="Models\PurchaseOrder.cs" />
     <Compile Include="Models\PurchaseOrderDetail.cs" />
     <Compile Include="Models\Role.cs" />
@@ -198,6 +205,20 @@
     <Compile Include="Models\SaleInvoiceDetail.cs" />
     <Compile Include="Models\SalesTarget.cs" />
     <Compile Include="Models\Vendor.cs" />
+    <Compile Include="Pages\productVendorLink.aspx.cs">
+      <DependentUpon>productVendorLink.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\productVendorLink.aspx.designer.cs">
+      <DependentUpon>productVendorLink.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\purchaseOrderEdit.aspx.cs">
+      <DependentUpon>purchaseOrderEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\purchaseOrderEdit.aspx.designer.cs">
+      <DependentUpon>purchaseOrderEdit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\SalesInvoiceUnD.aspx.cs">
       <DependentUpon>SalesInvoiceUnD.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -255,13 +276,6 @@
     <Compile Include="Pages\newsletter.aspx.designer.cs">
       <DependentUpon>newsletter.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\permission.aspx.cs">
-      <DependentUpon>permission.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\permission.aspx.designer.cs">
-      <DependentUpon>permission.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Pages\purchaseOrder.aspx.cs">
       <DependentUpon>purchaseOrder.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -276,13 +290,6 @@
     <Compile Include="Pages\salary.aspx.designer.cs">
       <DependentUpon>salary.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\salesTarget.aspx.cs">
-      <DependentUpon>salesTarget.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\salesTarget.aspx.designer.cs">
-      <DependentUpon>salesTarget.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Pages\vendor.aspx.cs">
       <DependentUpon>vendor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -296,6 +303,48 @@
     </Compile>
     <Compile Include="Pages\saleInvoice.aspx.designer.cs">
       <DependentUpon>saleInvoice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\safteyStock.aspx.cs">
+      <DependentUpon>safteyStock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\safteyStock.aspx.designer.cs">
+      <DependentUpon>safteyStock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\reportStock.aspx.cs">
+      <DependentUpon>reportStock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\reportStock.aspx.designer.cs">
+      <DependentUpon>reportStock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\reportProductSoldByTime.aspx.cs">
+      <DependentUpon>reportProductSoldByTime.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\reportProductSoldByTime.aspx.designer.cs">
+      <DependentUpon>reportProductSoldByTime.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\reportProductByCustomer.aspx.cs">
+      <DependentUpon>reportProductByCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\reportProductByCustomer.aspx.designer.cs">
+      <DependentUpon>reportProductByCustomer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\salesTarget.aspx.cs">
+      <DependentUpon>salesTarget.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\salesTarget.aspx.designer.cs">
+      <DependentUpon>salesTarget.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\changePassword.aspx.cs">
+      <DependentUpon>changePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\changePassword.aspx.designer.cs">
+      <DependentUpon>changePassword.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -328,9 +377,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Reports\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
