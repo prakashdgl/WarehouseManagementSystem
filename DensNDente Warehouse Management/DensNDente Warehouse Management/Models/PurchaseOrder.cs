@@ -8,9 +8,9 @@ namespace DensNDente_Warehouse_Management.Models
 {
     public class PurchaseOrder : IPurchaseOrder
     {
-         DensDBEntities repository;
+        DensDBEntities repository;
 
-         public PurchaseOrder()
+        public PurchaseOrder()
         {
             if (repository == null)
             {
@@ -29,7 +29,7 @@ namespace DensNDente_Warehouse_Management.Models
 
                 return null;
             }
-            
+
         }
 
         public tblPurchaseOrder Get(int id)
@@ -87,12 +87,33 @@ namespace DensNDente_Warehouse_Management.Models
 
             }
         }
-        public int GetId() { 
-            try 
-            { 
-   int[] POID = repository.tblPurchaseOrders.Where(r => r.Deleted == false).Select(r => r.POId).ToArray();
-                int max = POID.Max(); 
-                return max; } catch (Exception) { return 0; } }
+
+        public decimal totalPurchaseByMonth(DateTime startDate, DateTime endDate)
+        {
+            try
+            {
+                return (from p in repository.tblPurchaseOrders
+                        where p.OrderDate >= startDate && p.OrderDate <= endDate
+                        select p.TotalValue).Sum();
+            }
+            catch (Exception)
+            {
+
+                return 0;
+            }
+        }
+
+
+        public int GetId()
+        {
+            try
+            {
+                int[] POID = repository.tblPurchaseOrders.Where(r => r.Deleted == false).Select(r => r.POId).ToArray();
+                int max = POID.Max();
+                return max;
+            }
+            catch (Exception) { return 0; }
+        }
 
         public bool Add(tblPurchaseOrder obj)
         {
@@ -110,4 +131,5 @@ namespace DensNDente_Warehouse_Management.Models
             }
         }
     }
+
 }

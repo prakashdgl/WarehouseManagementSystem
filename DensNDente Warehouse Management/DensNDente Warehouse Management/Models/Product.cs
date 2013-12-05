@@ -32,6 +32,22 @@ namespace DensNDente_Warehouse_Management.Models
             
         }
 
+        public List<tblProduct> GetProducts_Report() {
+
+            try
+            {
+                return (from p in repository.tblProducts
+                        orderby p.ProductName
+                        select p).ToList();
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+
+        }
+
         public tblProduct Get(int id)
         {
 
@@ -100,9 +116,24 @@ namespace DensNDente_Warehouse_Management.Models
             }
             catch (Exception)
             {
-
                 return false;
             }
         }
+
+ public int Get_SafteyStockLevel_Count()
+        {
+
+            try
+            {
+                return repository.tblProducts.Where(r => r.Quantity < r.SafetyStockLevel).Count();
+            }
+            catch (Exception)
+            {
+
+                return 0;
+            }
+
+        }
+
     }
 }
