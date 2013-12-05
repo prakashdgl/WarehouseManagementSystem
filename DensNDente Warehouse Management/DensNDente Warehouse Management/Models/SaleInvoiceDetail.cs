@@ -87,20 +87,38 @@ namespace DensNDente_Warehouse_Management.Models
 
             }
         }
+
+
+        public bool Add(tblSaleInvoiceDetail obj)
+        {
+
+            try
+            {
+                repository.tblSaleInvoiceDetails.Add(obj);
+                repository.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
+
         public bool DeleteByInvoiceId(int id)
         {
 
             try
             {
                 var result = (from r in repository.tblSaleInvoiceDetails
-                                               where r.InvoiceId == id
-                                               select r);
-                        
-                        
-                    foreach (var detail in result)
-                    {
-                        repository.tblSaleInvoiceDetails.Remove(detail);
-                    }   
+                              where r.InvoiceId == id
+                              select r);
+
+
+                foreach (var detail in result)
+                {
+                    repository.tblSaleInvoiceDetails.Remove(detail);
+                }
                 repository.SaveChanges();
                 return true;
             }
@@ -132,21 +150,7 @@ namespace DensNDente_Warehouse_Management.Models
                 return false;
             }
         }
-        public bool Add(tblSaleInvoiceDetail obj)
-        {
 
-            try
-            {
-                repository.tblSaleInvoiceDetails.Add(obj);
-                repository.SaveChanges();
-                return true;
-            }
-            catch (Exception)
-            {
-
-                return false;
-            }
-        }
         public IEnumerable<tblSaleInvoiceDetail> GetOnInvoiceId(int invoiceid)
         {
             try
@@ -160,5 +164,6 @@ namespace DensNDente_Warehouse_Management.Models
             }
 
         }
+
     }
 }

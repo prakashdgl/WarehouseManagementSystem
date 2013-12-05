@@ -58,9 +58,11 @@ namespace DensNDente_Warehouse_Management
             {
 
                 TextBox txt = (TextBox)gridProduct.Rows[selRowIndex].FindControl("txtQuantity");
-                String quant = txt.Text;
+                String quant = txt.Text.Trim();
                 txt.Visible = false;
-                if (quant == null || quant == "") { 
+                if (quant == null || quant == "") {
+                    this.ShowErrorNotification("Please enter value");
+                    txt.Focus();
                 }else
                 {
                     double quantity = Convert.ToDouble(quant);
@@ -71,9 +73,12 @@ namespace DensNDente_Warehouse_Management
                     double totalcost = quantity * cost;
                     total -= totalcost;
                     txt.Text = "";
-                    txtDiscount.Text = "";
+                    txtDiscount.Text = "0";
                     lblTotal.Text = total.ToString();
-                    lblNetTotal.Text = "";
+                    double taxamt = Convert.ToDouble(txtTax.Text);
+                    double taxtotal = total + ((total * taxamt) / 100);
+
+                    lblNetTotal.Text = taxtotal.ToString();
                 }
             }
 

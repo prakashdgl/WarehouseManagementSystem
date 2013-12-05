@@ -101,11 +101,12 @@ IEnumerable<tblSaleInvoiceDetail> enume= repo.GetOnInvoiceId(Convert.ToInt32(sal
             {
 
                 TextBox txt = (TextBox)gridProduct1.Rows[selRowIndex].FindControl("txtQuantity");
-                String quant = txt.Text;
+                String quant = txt.Text.Trim();
                 txt.Visible = false;
                 if (quant == null || quant == "")
                 {
-
+                    this.ShowErrorNotification("Please enter correct value");
+                    txt.Focus();
                 }else
                 {
                     double quantity = Convert.ToDouble(quant);
@@ -117,10 +118,12 @@ IEnumerable<tblSaleInvoiceDetail> enume= repo.GetOnInvoiceId(Convert.ToInt32(sal
                     total -= totalcost;
                     txt.Text = "";
                     txt.Visible = false;
-                    txtDiscount1.Text = "";
-                    lblTotal1.Text = total.ToString();
-                    lblNetTotal1.Text = "";
-                }
+                    txtDiscount1.Text = "0";
+                    double taxamt = Convert.ToDouble(txtTax1.Text);
+                    double taxtotal = total + ((total * taxamt) / 100);
+
+                    lblNetTotal1.Text = taxtotal.ToString();
+                     }
             }
 
         }

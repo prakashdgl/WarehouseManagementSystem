@@ -20,7 +20,7 @@ namespace DensNDente_Warehouse_Management.Models
 
         public IEnumerable<tblSaleInvoice> GetAll()
         {
-            
+
             try
             {
                 return repository.tblSaleInvoices.Where(r => r.Deleted == false).Select(r => r);
@@ -30,7 +30,7 @@ namespace DensNDente_Warehouse_Management.Models
 
                 return null;
             }
-            
+
         }
 
         public tblSaleInvoice Get(int id)
@@ -107,10 +107,12 @@ namespace DensNDente_Warehouse_Management.Models
         }
         public int GetId()
         {
+
+
             try
             {
-                int[] invoiceID = repository.tblSaleInvoices.Where(r => r.Deleted == false).Select(r => r.InvoiceId).ToArray(); 
-                int max = invoiceID.Max(); 
+                int[] invoiceID = repository.tblSaleInvoices.Where(r => r.Deleted == false).Select(r => r.InvoiceId).ToArray();
+                int max = invoiceID.Max();
                 return max;
             }
             catch (Exception)
@@ -125,7 +127,7 @@ namespace DensNDente_Warehouse_Management.Models
                 {
                     order.tblSaleInvoiceDetails.Add(item);
                 }
-               
+
                 repository.tblSaleInvoices.Add(order);
                 repository.SaveChanges();
 
@@ -135,6 +137,68 @@ namespace DensNDente_Warehouse_Management.Models
             {
 
                 return false;
+            }
+        }
+
+        public decimal totalSaleByMonth(DateTime startDate, DateTime endDate)
+        {
+            try
+            {
+                return (from p in repository.tblSaleInvoices
+                        where p.InvoiceDate >= startDate && p.InvoiceDate <= endDate
+                        select p.TotalSale).Sum();
+            }
+            catch (Exception)
+            {
+
+                return 0;
+            }
+        }
+
+        public class ReportProductByTime
+        {
+            public string ProductName { get; set; }
+            public int TotalQTY { get; set; }
+        }
+
+        public List<ReportProductByTime> getProductByTime(DateTime StartTime, DateTime EndTime)
+        {
+
+            try
+            {
+
+                var product = (from p in repository.tblSaleInvoiceDetails
+                               where p.tblSaleInvoice.InvoiceDate >= StartTime && p.tblSaleInvoice.InvoiceDate <= EndTime
+                               group p by p.tblProduct.ProductName into g
+                               let totalQty = g.Select(r => r.Quantity).Sum()
+                               orderby totalQty descending
+                               select new ReportProductByTime { ProductName = g.Key, TotalQTY = totalQty }).ToList();
+                return product;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+
+        }
+
+
+        public List<ReportProductByTime> getProductByCustomer(int id)
+        {
+            try
+            {
+                var product = (from p in repository.tblSaleInvoiceDetails
+                               where p.tblSaleInvoice.CustomerId == id
+                               group p by p.tblProduct.ProductName into g
+                               let totalQty = g.Select(r => r.Quantity).Sum()
+                               orderby totalQty descending
+                               select new ReportProductByTime { ProductName = g.Key, TotalQTY = totalQty }).ToList();
+                return product;
+            }
+            catch (Exception)
+            {
+                return null;
             }
 
         }
