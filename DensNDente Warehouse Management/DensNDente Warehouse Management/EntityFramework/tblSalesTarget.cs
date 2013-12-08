@@ -15,10 +15,8 @@ namespace DensNDente_Warehouse_Management.EntityFramework
     public partial class tblSalesTarget
     {
         public int SalesTargetId { get; set; }
-        public int MonthName { get; set; }
-        public int YearName { get; set; }
+        public string MonthName { get; set; }
         public int TargetAmount { get; set; }
-        public int AchievedAmount { get; set; }
         public bool Deleted { get; set; }
     }
 }

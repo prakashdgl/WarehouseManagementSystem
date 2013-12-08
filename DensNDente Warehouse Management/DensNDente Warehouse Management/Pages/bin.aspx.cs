@@ -17,11 +17,15 @@ namespace DensNDente_Warehouse_Management
             if (!Page.IsPostBack)
             {
                 gridBin.DataBind();
+                               
+
             }
         }
 
         protected void btnInsert_Click(object sender, EventArgs e)
         {
+          
+
             try
             {
                 var repository = new Bin();

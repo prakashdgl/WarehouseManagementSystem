@@ -16,5 +16,30 @@ namespace DensNDente_Warehouse_Management
         {
 
         }
+
+        protected void btnInsert_Click(object sender, EventArgs e)
+        {
+            NewsLetter repository = new NewsLetter();
+            Customer obj = new Customer();
+            var emails = obj.GetAll().Select(r => r.Email).ToArray();
+            Email eml = new Email();
+            foreach (var item in emails)
+            {
+                eml.sendEmail(item, txtMessage.Text);
+            }
+            if (repository.Add(new tblNewsLetter { Message = txtMessage.Text, NewsDate = DateTime.Now }))
+            {
+                txtMessage.Text = "";
+                this.ShowSuccessfulNotification("Email sent successfully");
+                gridNewsletters.DataBind();
+            }
+            else
+            {
+                this.ShowErrorNotification("Error occured");
+            }
+
+        }
+
+
     }
 }

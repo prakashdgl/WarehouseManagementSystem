@@ -30,7 +30,8 @@ namespace DensNDente_Warehouse_Management
             }
         }
 
-        private tblProduct get_data_from_form() {
+        private tblProduct get_data_from_form()
+        {
 
             return new tblProduct
             {
@@ -38,11 +39,11 @@ namespace DensNDente_Warehouse_Management
                 ProductDescription = txtProdDescription.Text.Trim(),
                 ReorderPoint = Convert.ToInt32(txtReoderPoint.Text.Trim()),
                 SafetyStockLevel = Convert.ToInt32(txtSafetyLevel.Text.Trim()),
-                StandardCost = Convert.ToInt32(txtStdCost.Text.Trim()),
-                SellingCost = Convert.ToInt32(txtSellingCost.Text.Trim()),
-                ImagePath="dasd",
-                Quantity=0,
-                
+                StandardCost = Convert.ToDecimal(txtStdCost.Text.Trim()),
+                SellingCost = Convert.ToDecimal(txtSellingCost.Text.Trim()),
+                ImagePath = "dasd",
+                Quantity = 0,
+
                 BinId = Convert.ToInt32(ddlBinId.SelectedValue)
             };
 
@@ -55,33 +56,47 @@ namespace DensNDente_Warehouse_Management
             btnInsert.Visible = false;
             btnUpdate.Visible = true;
             linkBack.Visible = true;
-
-
+            
             Product repository = new Product();
             tblProduct result = repository.Get(Int32.Parse(Request.QueryString["id"]));
 
             txtProductName.Text = result.ProductName;
             txtProdDescription.Text = result.ProductDescription;
-            txtReoderPoint.Text = Convert.ToInt16(result.ReorderPoint).ToString();
-            txtSafetyLevel.Text = Convert.ToInt16(result.SafetyStockLevel).ToString();
-            txtSellingCost.Text = Convert.ToInt16(result.SellingCost).ToString();
-            txtStdCost.Text = Convert.ToInt16(result.StandardCost).ToString();
-          }
+            ddlBinId.SelectedValue = result.BinId.ToString();
+            txtReoderPoint.Text = result.ReorderPoint.ToString();
+            txtSafetyLevel.Text = result.SafetyStockLevel.ToString();
+            txtSellingCost.Text = result.SellingCost.ToString();
+            txtStdCost.Text = result.StandardCost.ToString();
+        }
 
-        private void clear_form(){
+        private void clear_form()
+        {
 
             txtProductName.Text = "";
             txtProdDescription.Text = "";
             txtReoderPoint.Text = "";
             txtSafetyLevel.Text = "";
             txtStdCost.Text = "";
-            txtSellingCost.Text = "";            
+            txtSellingCost.Text = "";
         }
-        private void load_grid() {
-            Product repository = new Product();
-            var result = repository.GetAll().Select(r => new { r.ProductName, BinName = r.tblBin.Name, r.StandardCost, r.SellingCost, r.Quantity, r.SafetyStockLevel, r.ReorderPoint }).ToArray();
-            gridProduct.DataSource = result;
-            gridProduct.DataBind();
+        private void load_grid()
+        {
+            try
+            {
+                Product repository = new Product();
+
+                var result = repository.GetAll().ToArray();
+                if (result != null)
+                {
+                    gridProduct.DataSource = result;
+                    gridProduct.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                this.ShowErrorNotification("Error while binding grid");
+            }
         }
 
         protected void btnInsert_Click(object sender, EventArgs e)
@@ -89,10 +104,14 @@ namespace DensNDente_Warehouse_Management
             var repository = new Product();
             if (repository.Add(get_data_from_form()))
             {
-                this.ShowSuccessfulNotification("Product added successfully");
                 clear_form();
                 load_grid();
-            }            
+                this.ShowSuccessfulNotification("Product added successfully");
+            }
+            else
+            {
+                this.ShowErrorNotification("Error occured");
+            }
         }
 
 

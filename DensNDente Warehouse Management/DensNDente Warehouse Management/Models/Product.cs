@@ -8,7 +8,7 @@ namespace DensNDente_Warehouse_Management.Models
 {
     public class Product : IProduct
     {
-         DensDBEntities repository;
+        DensDBEntities repository;
 
         public Product()
         {
@@ -17,6 +17,8 @@ namespace DensNDente_Warehouse_Management.Models
                 repository = new DensDBEntities();
             }
         }
+
+
 
         public IEnumerable<tblProduct> GetAll()
         {
@@ -29,10 +31,11 @@ namespace DensNDente_Warehouse_Management.Models
 
                 return null;
             }
-            
+
         }
 
-        public List<tblProduct> GetProducts_Report() {
+        public List<tblProduct> GetProducts_Report()
+        {
 
             try
             {
@@ -59,6 +62,21 @@ namespace DensNDente_Warehouse_Management.Models
             {
                 return null;
             }
+        }
+
+        public int Get_SafteyStockLevel_Count()
+        {
+
+            try
+            {
+                return repository.tblProducts.Where(r => r.Quantity < r.SafetyStockLevel).Count();
+            }
+            catch (Exception)
+            {
+
+                return 0;
+            }
+
         }
 
         public bool Update(tblProduct obj)
@@ -119,21 +137,5 @@ namespace DensNDente_Warehouse_Management.Models
                 return false;
             }
         }
-
- public int Get_SafteyStockLevel_Count()
-        {
-
-            try
-            {
-                return repository.tblProducts.Where(r => r.Quantity < r.SafetyStockLevel).Count();
-            }
-            catch (Exception)
-            {
-
-                return 0;
-            }
-
-        }
-
     }
 }

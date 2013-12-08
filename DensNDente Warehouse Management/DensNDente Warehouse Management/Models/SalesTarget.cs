@@ -29,7 +29,24 @@ namespace DensNDente_Warehouse_Management.Models
 
                 return null;
             }
-            
+
+        }
+
+        public bool checkSaleTarget_Available(String name)
+        {
+
+            try
+            {
+                var count = repository.tblSalesTargets.Where(r => r.MonthName.Equals(name, StringComparison.Ordinal)).Count();
+                return count > 0 ? true : false;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+
+
         }
 
         public tblSalesTarget Get(int id)

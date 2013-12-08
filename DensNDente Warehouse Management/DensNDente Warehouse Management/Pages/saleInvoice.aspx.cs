@@ -21,7 +21,7 @@ namespace DensNDente_Warehouse_Management
                 load_dropdown();
                 SaleInvoice s = new SaleInvoice();
                 tblSaleInvoice salesinvoice = new tblSaleInvoice();
-                int maxid=s.GetId();
+                int maxid = s.GetId();
                 lblInvoiceNo.Text = (maxid + 1).ToString();
             }
         }
@@ -34,9 +34,9 @@ namespace DensNDente_Warehouse_Management
         }
         private void load_dropdown()
         {
-            Customer repository = new Customer(); 
-            var result = repository.GetAll().Where(r => r.Deleted == false).Select(r => new { id = r.CustomerId, name = r.Firstname }).ToList(); 
-            result.Insert(0, new { id = 0, name = "--SELECT NAME--" }); 
+            Customer repository = new Customer();
+            var result = repository.GetAll().Where(r => r.Deleted == false).Select(r => new { id = r.CustomerId, name = r.Firstname }).ToList();
+            result.Insert(0, new { id = 0, name = "--SELECT NAME--" });
             customerDropDown.DataSource = result;
             customerDropDown.DataBind();
         }
@@ -60,10 +60,17 @@ namespace DensNDente_Warehouse_Management
                 TextBox txt = (TextBox)gridProduct.Rows[selRowIndex].FindControl("txtQuantity");
                 String quant = txt.Text.Trim();
                 txt.Visible = false;
+<<<<<<< HEAD
+                if (quant == null || quant == "")
+                {
+                }
+                else
+=======
                 if (quant == null || quant == "") {
                     this.ShowErrorNotification("Please enter value");
                     txt.Focus();
                 }else
+>>>>>>> 61ee6f6ddb3165cf48ef9aa56c56f356e568343a
                 {
                     double quantity = Convert.ToDouble(quant);
 
@@ -97,14 +104,15 @@ namespace DensNDente_Warehouse_Management
                 int id = Convert.ToInt32(gridProduct.DataKeys[selRowIndex].Value);
                 Product p = new Product();
                 tblProduct product = p.Get(id);
-               // CheckBox cb1 = (CheckBox)gridProduct.Rows[selRowIndex].FindControl("chkbox1");
-                    TextBox txt = (TextBox)gridProduct.Rows[selRowIndex].FindControl("txtQuantity");
-                    if (txt.Text == "" || txt.Text == null)
-                    {
-                        this.ShowErrorNotification("Please enter Value");
-                        txt.Focus();
-                    }else
-                    {
+                // CheckBox cb1 = (CheckBox)gridProduct.Rows[selRowIndex].FindControl("chkbox1");
+                TextBox txt = (TextBox)gridProduct.Rows[selRowIndex].FindControl("txtQuantity");
+                if (txt.Text == "" || txt.Text == null)
+                {
+                    this.ShowErrorNotification("Please enter Value");
+                    txt.Focus();
+                }
+                else
+                {
                     String quantChk = txt.Text;
                     double quantityChk = Convert.ToDouble(quantChk);
                     if (product.Quantity < quantityChk)
@@ -113,33 +121,38 @@ namespace DensNDente_Warehouse_Management
                         quantityChk = product.Quantity;
                         txt.Text = quantityChk.ToString();
                     }
-               foreach(GridViewRow row in gridProduct.Rows)
-               {
-                   CheckBox cb1 = (CheckBox)row.FindControl("chkbox1");
-                   TextBox txt1 = (TextBox)row.FindControl("txtQuantity");
-                   if (cb1.Checked)
-                   {
-                       String quant = txt1.Text;
-                       double quantity = Convert.ToDouble(quant);
+                    foreach (GridViewRow row in gridProduct.Rows)
+                    {
+                        CheckBox cb1 = (CheckBox)row.FindControl("chkbox1");
+                        TextBox txt1 = (TextBox)row.FindControl("txtQuantity");
+                        if (cb1.Checked)
+                        {
+                            String quant = txt1.Text.Trim();
+                            double quantity = 0.00;
+                            if (quant != "")
+                            {
 
-                       Label lbl = (Label)row.FindControl("SellingCost");
+                                quantity = Convert.ToDouble(quant);
+                            }
 
-                       double cost = Convert.ToDouble(lbl.Text);
-                       double totalcost = quantity * cost;
-                       total += totalcost;
-                       lblTotal.Text = total.ToString();
-                       txtDiscount.Text = "0";
-                       double taxamt = Convert.ToDouble(txtTax.Text);
-                       double taxtotal = total + ((total * taxamt) / 100);
+                            Label lbl = (Label)row.FindControl("SellingCost");
 
-                       lblNetTotal.Text = taxtotal.ToString();
-                   }
-           
-               }
+                            double cost = Convert.ToDouble(lbl.Text);
+                            double totalcost = quantity * cost;
+                            total += totalcost;
+                            lblTotal.Text = total.ToString();
+                            txtDiscount.Text = "0";
+                            double taxamt = Convert.ToDouble(txtTax.Text);
+                            double taxtotal = total + ((total * taxamt) / 100);
+
+                            lblNetTotal.Text = taxtotal.ToString();
+                        }
+
+                    }
                 }
             }
-                
-                 
+
+
 
         }
 
@@ -148,7 +161,7 @@ namespace DensNDente_Warehouse_Management
             Boolean a = true;
             var repository = new SaleInvoice();
             var repository_detail = new SaleInvoiceDetail();
-            if (customerDropDown.SelectedValue=="0") 
+            if (customerDropDown.SelectedValue == "0")
             {
                 this.ShowErrorNotification("Please select the Customer");
                 a = false;
@@ -169,7 +182,7 @@ namespace DensNDente_Warehouse_Management
             }
             if (a)
             {
-                
+
                 tblSaleInvoice tbl = new tblSaleInvoice();
                 tblSaleInvoiceDetail tbl_detail = new tblSaleInvoiceDetail();
                 tbl.InvoiceNo = lblInvoiceNo.Text;
@@ -197,19 +210,19 @@ namespace DensNDente_Warehouse_Management
                         tbl_detail.ProductId = id;
                         tbl_detail.Quantity = Convert.ToInt32(quantity);
                         repository_detail.Add(tbl_detail);
-                        prod=repo.Get(id);
+                        prod = repo.Get(id);
                         prod.Quantity = prod.Quantity - Convert.ToInt32(quantity);
                         repo.Update(prod);
-                        
+
                     }
                 }
-                
-            this.ShowSuccessfulNotification("Sale Invoice Added");
-            Response.Redirect("saleInvoice.aspx",true);
+
+                this.ShowSuccessfulNotification("Sale Invoice Added");
+                Response.Redirect("saleInvoice.aspx", true);
             }
             else
             {
-            this.ShowErrorNotification("Please select any product OR Enter Correct Quantity");
+                this.ShowErrorNotification("Please select any product OR Enter Correct Quantity");
             }
         }
 
@@ -223,7 +236,7 @@ namespace DensNDente_Warehouse_Management
             lblNetTotal.Text = nettotal.ToString();
         }
 
-       
+
     }
 
 

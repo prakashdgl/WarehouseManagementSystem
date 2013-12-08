@@ -119,11 +119,19 @@ IEnumerable<tblSaleInvoiceDetail> enume= repo.GetOnInvoiceId(Convert.ToInt32(sal
                     txt.Text = "";
                     txt.Visible = false;
                     txtDiscount1.Text = "0";
+<<<<<<< HEAD
+                    lblTotal1.Text = total.ToString(); 
+=======
+>>>>>>> 61ee6f6ddb3165cf48ef9aa56c56f356e568343a
                     double taxamt = Convert.ToDouble(txtTax1.Text);
                     double taxtotal = total + ((total * taxamt) / 100);
 
                     lblNetTotal1.Text = taxtotal.ToString();
+<<<<<<< HEAD
+                }
+=======
                      }
+>>>>>>> 61ee6f6ddb3165cf48ef9aa56c56f356e568343a
             }
 
         }

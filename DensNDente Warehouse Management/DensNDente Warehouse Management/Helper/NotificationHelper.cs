@@ -23,9 +23,11 @@ namespace jQueryNotification.Helper
         /// <param name="message">The message.</param>
         public static void ShowWarningNotification(this Page page, string message)
         {
+
             page.ClientScript.RegisterStartupScript(page.GetType(), "notificationScript",
                                                     "<script type='text/javascript'> $(document).ready(function () { $.jnotify('" +
                                                     message + "', 'warning'); });</script>");
+         
         }
 
         /// <summary>
@@ -35,6 +37,7 @@ namespace jQueryNotification.Helper
         /// <param name="message">The message.</param>
         public static void ShowErrorNotification(this Page page, string message)
         {
+
             page.ClientScript.RegisterStartupScript(page.GetType(), "notificationScript",
                                                     "<script type='text/javascript'> $(document).ready(function () { $.jnotify('" +
                                                     message + "', 'error'); });</script>");

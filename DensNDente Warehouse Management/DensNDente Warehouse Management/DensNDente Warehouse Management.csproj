@@ -63,6 +63,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="404.aspx" />
     <Content Include="default.aspx" />
     <Content Include="Images\ajax-loader.gif" />
     <Content Include="Images\logo.png" />
@@ -97,6 +98,13 @@
     <Content Include="Pages\changePassword.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="404.aspx.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="404.aspx.designer.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Client.Master.cs">
       <DependentUpon>Client.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -367,6 +375,8 @@
       <DependentUpon>DensModel.edmx</DependentUpon>
       <LastGenOutput>DensModel.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\densndente - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\densndente - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

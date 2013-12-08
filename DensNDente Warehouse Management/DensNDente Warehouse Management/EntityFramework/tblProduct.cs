@@ -18,6 +18,7 @@ namespace DensNDente_Warehouse_Management.EntityFramework
         {
             this.tblPurchaseOrderDetails = new HashSet<tblPurchaseOrderDetail>();
             this.tblSaleInvoiceDetails = new HashSet<tblSaleInvoiceDetail>();
+            this.tblProductVendorLinks = new HashSet<tblProductVendorLink>();
         }
     
         public int ProductId { get; set; }
@@ -35,5 +36,6 @@ namespace DensNDente_Warehouse_Management.EntityFramework
         public virtual tblBin tblBin { get; set; }
         public virtual ICollection<tblPurchaseOrderDetail> tblPurchaseOrderDetails { get; set; }
         public virtual ICollection<tblSaleInvoiceDetail> tblSaleInvoiceDetails { get; set; }
+        public virtual ICollection<tblProductVendorLink> tblProductVendorLinks { get; set; }
     }
 }

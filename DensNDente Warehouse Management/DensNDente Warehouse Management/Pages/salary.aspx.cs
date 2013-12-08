@@ -53,7 +53,7 @@ namespace DensNDente_Warehouse_Management
             txtStartDate.Text = result.StartDate.ToShortDateString();
             txtEndDate.Text = result.EndDate.ToShortDateString();
             txtTotalHours.Text = result.TotalHours.ToString();
-            lblTotalSalary.Text = result.TotalSalary.ToString();
+            lblTotalSalary.Text = "$"+result.TotalSalary.ToString();
 
 
         }
@@ -95,7 +95,7 @@ namespace DensNDente_Warehouse_Management
 
             if (repository.Add(get_Data_From_Form()))
             {
-                this.ShowSuccessfulNotification("Employee added successfully");
+                this.ShowSuccessfulNotification("Salary added successfully");
                 clear_form();
                 Load_Data_Grid();
             }

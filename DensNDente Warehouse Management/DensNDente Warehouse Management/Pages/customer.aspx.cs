@@ -23,6 +23,8 @@ namespace DensNDente_Warehouse_Management
                 else
                 {
                     Load_Data_Grid();
+                    
+                    
                 }
             }
         }
@@ -57,6 +59,8 @@ namespace DensNDente_Warehouse_Management
             txtEmail.Text = result.Email;
             txtPhoneNumber.Text = result.Phone;
             txtFaxNumber.Text = result.Fax;
+
+
         }
 
         private tblCustomer get_Data_From_Form()
@@ -65,10 +69,12 @@ namespace DensNDente_Warehouse_Management
             {
                 Firstname = txtFirstname.Text.Trim(),
                 Lastname = txtLastname.Text.Trim(),
-                Address = txtAddress.Text.Trim(),
+                Address = txtAddress.Text.Trim()
+                ,
                 City = txtCity.Text.Trim(),
                 State = txtState.Text.Trim(),
-                Email = txtEmail.Text.Trim(),
+                Email = txtEmail.Text.Trim()
+                ,
                 Title = txtCompanyName.Text.Trim(),
                 Fax = txtFaxNumber.Text.Trim(),
                 Phone = txtPhoneNumber.Text.Trim(),
@@ -134,7 +140,7 @@ namespace DensNDente_Warehouse_Management
             Customer repository = new Customer();
             if (repository.Delete(id))
             {
-                this.ShowSuccessfulNotification("Product deleted.");
+                this.ShowSuccessfulNotification("Customer deleted.");
                 Load_Data_Grid();
             }
             else

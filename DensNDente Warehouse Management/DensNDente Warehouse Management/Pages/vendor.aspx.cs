@@ -79,7 +79,17 @@ namespace DensNDente_Warehouse_Management
 
         protected void btnInsert_Click(object sender, EventArgs e)
         {
-            Insert_Vendor();
+            string add = txtAddress.Text.Trim();
+            string name = txtName.Text.Trim();
+            string des = txtDescription.Text.Trim();
+            if (add == "" || name == "" || des == "")
+            {
+                this.ShowErrorNotification("Please enter information");
+            }
+            else
+            {
+                Insert_Vendor();
+            }
         }
 
         private void Insert_Vendor()

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DensDBEntities-Web.config Connection String" description="DensDBEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/EntityFramework.DensModel.csdl|res://*/EntityFramework.DensModel.ssdl|res://*/EntityFramework.DensModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=MAYA-PC\MAYA;initial catalog=DensDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Maya\\Documents\\Visual\ Studio\ 2012\\Projects\\DensNDente\ Warehouse\ Management\\DensNDente\ Warehouse\ Management\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DensDBEntities']/@connectionString" />
+  </parameter>
+  <parameter name="DensDBConnectionString-Web.config Connection String" description="DensDBConnectionString Connection String used in web.config by the application to access the database." defaultValue="Data Source=MAYA-PC\MAYA;Initial Catalog=DensDB;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Maya\\Documents\\Visual\ Studio\ 2012\\Projects\\DensNDente\ Warehouse\ Management\\DensNDente\ Warehouse\ Management\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DensDBConnectionString']/@connectionString" />
+  </parameter>
+</parameters>

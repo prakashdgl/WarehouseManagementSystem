@@ -29,7 +29,6 @@ namespace DensNDente_Warehouse_Management.EntityFramework
         public DbSet<tblCustomer> tblCustomers { get; set; }
         public DbSet<tblEmployee> tblEmployees { get; set; }
         public DbSet<tblNewsLetter> tblNewsLetters { get; set; }
-        public DbSet<tblPermission> tblPermissions { get; set; }
         public DbSet<tblProduct> tblProducts { get; set; }
         public DbSet<tblPurchaseOrder> tblPurchaseOrders { get; set; }
         public DbSet<tblPurchaseOrderDetail> tblPurchaseOrderDetails { get; set; }
@@ -39,5 +38,6 @@ namespace DensNDente_Warehouse_Management.EntityFramework
         public DbSet<tblSaleInvoiceDetail> tblSaleInvoiceDetails { get; set; }
         public DbSet<tblSalesTarget> tblSalesTargets { get; set; }
         public DbSet<tblVendor> tblVendors { get; set; }
+        public DbSet<tblProductVendorLink> tblProductVendorLinks { get; set; }
     }
 }
